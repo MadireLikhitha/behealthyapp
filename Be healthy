@@ -1,0 +1,169 @@
+import java.util.Scanner;
+
+ interface Register
+{
+
+  public void SignUp();
+  public void Login();
+  public  void initialize();
+   
+}
+   
+   
+    
+   class Dcoder implements Register
+ {
+   private static String name;
+   private static String password;
+   private static String mName;
+   private static String mPassword;
+   private static int age;
+   
+      public void SignUp()
+      {
+      Scanner sc = new Scanner(System.in);
+      System.out.println("\n\nSIGN UP\n");
+      System.out.println("Hello there, new user! \nPlease tell us your name.");
+      
+      name = sc.nextLine();
+      
+      System.out.println("For your further security\nplease tell us your password");
+      
+      password = sc.nextLine();
+      
+      System.out.println("Wonderful! Whats your age?");
+      
+      age = sc.nextInt();
+      
+      System.out.println("Cool!"); 
+      System.out.println("\n\nYou are now signed up!\n Please login now!\n\n");
+      initialize();
+      
+      }
+    
+      public void Login()
+      {
+      System.out.println("\n\nLOGIN\n");
+      Scanner sc = new Scanner(System.in);
+      System.out.println("Hello, whats your name again?");
+      mName = sc.nextLine();
+      
+      if(mName.equals(name))
+      {
+        System.out.println("Oh, yes! Almost forgot. Hello, " + name);
+        System.out.println("Please enter your password");
+        mPassword = sc.nextLine();
+        
+        if(mPassword.equals(password))
+        {
+          System.out.println("\n\nPROFILE");
+          System.out.println("\nYour name is "+name);
+          System.out.println("Your password is "+password);
+          System.out.println("Your age is "+age);
+        }
+        else
+        {
+          System.out.println("\nWrong password \nPlease try again");
+          Login();
+        }
+      }
+      else
+      {
+        System.out.println("\nSorry, I dont remember you. \nHave you signed up?");
+        initialize();
+      }
+    }
+    
+    
+    
+    public  void initialize(){
+      Scanner sc = new Scanner(System.in);
+     
+      System.out.println("Login or Signup? \n\nIf Login press 1\nIf Signup press 2");
+     try{
+      int input = sc.nextInt();
+     
+      if(input == 1){
+        Login();
+      }
+      else
+      {
+        SignUp();
+      }
+      }
+      
+      catch(Exception e)
+     {
+      System.out.println("Enter only integers..");
+     initialize();
+     }
+     
+    }
+    
+    public static void main(String args[])
+   {
+     Scanner sc = new Scanner(System.in);
+     System.out.println("Author : M.Likhitha \nSap id :51834624");
+   
+           Register obj3= new Dcoder();
+           obj3.initialize();
+           
+           System.out.println("\n\n\n"+name+"   you are logged in successfully 😊");
+  
+      System.out.println("\n\n\nselect one of the follow hospitals");
+       
+        System.out.println("1) KIMS ");
+        System.out.println("2) SRAVANI HOSPITAL");
+        System.out.println("3) ANU CHILDREN HOSPITAL");
+        System.out.println("4) ENT HOSPITAL");
+        System.out.println("5) Rajeshwari Nursing home");
+        System.out.println("6) Quit");
+        
+        
+        System.out.print("Enter choice [1-6]: ");
+        int user_choice1 = sc.nextInt();
+        switch (user_choice1)
+        {
+            case 1: System.out.println("\n\nDo you want to take check up in KIMS !!!! ....\nyess it's no.1 hospital. \n\nwhich branch of KIMS you want to go for check up \n1.Ongole \n2.srikakulam \n3.Vizag ");
+                    System.out.println("\nenter the choice[1-3]: ");
+                int user_choice2 =sc.nextInt();
+                switch (user_choice2) 
+                {
+                    case 1: System.out.println("\nconsult the doctor \nDr.ramaKrishna specialist in Gynaecology ");
+                
+                    break;
+                    case 2:System.out.println("\nconsult the doctor \nDr.radha specialist in Cardiology ");
+                    
+                    break;
+                    case 3:System.out.println("\nconsult the doctor \nDr.Sravani specialists in psychology");
+                    
+                    break;
+                    default : System.out.println("\nplease enter the correct branch id" );
+                    break;
+                }
+                break;
+            case 2:System.out.println("\nDo you want to take check up in SRAVANI hospital!!!!....\n\nyes it's a good hospital.  \n\nconsult Dr.Sravani specialist in gynaecology ");
+                    break;
+                    
+            case 3:System.out.println("\nDo you want to take check up in ANU CHILDREN HOSPITAL!!!!....\nyes it's a good for children.  \n\nconsult Dr.Sangeetha specialist in DIAGNOSTIC " );
+                    break ;
+                    
+            case 4:System.out.println("\nDo you want to take check up in  Dr.Ramesh ENT hospital!!!!....\nyes it's a good hospital.  \n\nconsult Dr.ramesh specialist in nephrology ");
+                    break;
+                    
+            case 5:System.out.println("\nDo you want to take check up in  RAJESWARI NURSINNG HOME!!!!....\nyes it's a good multispeaciality hospital!!!  \n\nconsult Dr.Rajeshwari specialist in gynaecology ");
+                   break;
+        
+            case 6:  System.out.println("\nare you sure you want to exit!!!");
+                        sc.nextLine();
+                      String reply=sc.nextLine();
+                      if (reply.equals("yes")) 
+                      {
+                          System.exit(0);
+                      }
+                      
+          
+        }
+       
+    }
+ }
